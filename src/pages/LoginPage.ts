@@ -28,6 +28,6 @@ export class LoginPage {
   }
 
   async verifyDashboardVisible() {
-    await expect(this.dashboardHeading).toBeVisible({ timeout: 15000 });
+    await expect(this.dashboardHeading).toBeVisible({ timeout: 5000 });
   }
 }

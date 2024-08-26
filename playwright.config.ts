@@ -43,6 +43,8 @@ export default defineConfig({
       {
         detail: true,
         suiteTitle: false,
+        outputFolder: "allure-results",
+        categories: ["./categories.json"],
         environmentInfo: {
           os_platform: os.platform(),
           os_release: os.release(),
