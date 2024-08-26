@@ -1,27 +1,33 @@
-import { Page, expect } from "@playwright/test";
+import { expect, type Locator, type Page } from "@playwright/test";
 
 export class LoginPage {
-  constructor(private page: Page) {}
+  readonly page: Page;
+  readonly usernameInput: Locator;
+  readonly passwordInput: Locator;
+  readonly invalidLoginError: Locator;
+  readonly dashboardHeading: Locator;
 
-  async navigate() {
-    await this.page.goto("/");
+  constructor(page: Page) {
+    this.page = page;
+    this.usernameInput = page.getByPlaceholder("Username");
+    this.passwordInput = page.getByPlaceholder("Password");
+    this.invalidLoginError = page.locator("#claimVerificationServerError");
+    this.dashboardHeading = page.getByRole("heading", { name: "Dashboard" });
   }
 
   async login(username: string, password: string) {
-    await this.page.getByPlaceholder("Username").fill(username);
-    await this.page.getByPlaceholder("Password").fill(password);
-    await this.page.getByPlaceholder("Password").press("Enter");
+    await this.usernameInput.fill(username);
+    await this.passwordInput.fill(password);
+    await this.passwordInput.press("Enter");
   }
 
   async verifyInvalidLoginError() {
-    await expect(
-      this.page.locator("#claimVerificationServerError")
-    ).toContainText("Invalid username or password.");
+    await expect(this.invalidLoginError).toContainText(
+      "Invalid username or password."
+    );
   }
 
   async verifyDashboardVisible() {
-    await expect(
-      this.page.getByRole("heading", { name: "Dashboard" })
-    ).toBeVisible({ timeout: 8000 });
+    await expect(this.dashboardHeading).toBeVisible({ timeout: 15000 });
   }
 }

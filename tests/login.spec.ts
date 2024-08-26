@@ -11,7 +11,7 @@ let homePage: HomePage;
 test.beforeEach(async ({ page }) => {
   loginPage = new LoginPage(page);
   homePage = new HomePage(page);
-  await loginPage.navigate();
+  await homePage.navigate();
   await homePage.clickSignIn();
 });
 
