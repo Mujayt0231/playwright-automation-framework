@@ -5,6 +5,9 @@ node_modules/
 test-results/
 playwright-report/
 blob-report/
+allure-report/
+allure-results/
+test-results.json
 
 # Playwright cache
 playwright/.cache/
