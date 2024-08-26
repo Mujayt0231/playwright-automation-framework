@@ -3,7 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+ "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "report:allure": "allure generate allure-results --clean && allure open allure-report",
+    "report:playwright": "playwright show-report playwright-report",
+    "clean": "rimraf allure-results && rimraf allure-report && rimraf playwright-report && rimraf test-results",
+    "pretest": "npm run clean"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
