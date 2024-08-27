@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
- "scripts": {
+  "scripts": {
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
@@ -19,5 +19,8 @@
     "@playwright/test": "^1.46.1",
     "@types/node": "^22.4.1",
     "allure-playwright": "^3.0.0-beta.10"
+  },
+  "dependencies": {
+    "winston": "^3.14.2"
   }
 }
