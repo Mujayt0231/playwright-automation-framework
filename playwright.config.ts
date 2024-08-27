@@ -43,7 +43,6 @@ export default defineConfig({
       {
         detail: true,
         suiteTitle: false,
-        outputFolder: "allure-results",
         categories: ["./categories.json"],
         environmentInfo: {
           os_platform: os.platform(),
@@ -53,7 +52,8 @@ export default defineConfig({
         },
       },
     ],
-    ["html"],
+    ["html", { outputFolder: "playwright-report" }],
+    ["junit", { outputFile: "test-results/junit-results.xml" }],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
